@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Consumer {
+    private String name;
+    private int consumerId;
+    private double unitsConsumed;
+    private double billAmount;
+
+    public Consumer(String name, int consumerId, double unitsConsumed) {
+        this.name = name;
+        this.consumerId = consumerId;
+        this.unitsConsumed = unitsConsumed;
+        this.billAmount = calculateBill();
+    }
+
+    private double calculateBill() {
+        double ratePerUnit = 5.0;
+        return unitsConsumed * ratePerUnit;
+    }
+
+    public void displayDetails() {
+        System.out.println("------------------------------------");
+        System.out.println("Consumer ID: " + consumerId);
+        System.out.println("Name: " + name);
+        System.out.println("Units Consumed: " + unitsConsumed);
+        System.out.println("Total Bill Amount: Rs. " + billAmount);
+        System.out.println("------------------------------------");
+    }
+}
+
+public class ElectricityManagementSystem {
+    private static ArrayList<Consumer> consumers = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("\nElectricity Management System");
+            System.out.println("1. Add Consumer");
+            System.out.println("2. Display All Consumers");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addConsumer();
+                    break;
+                case 2:
+                    displayConsumers();
+                    break;
+                case 3:
+                    System.out.println("Exiting... Thank you!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    private static void addConsumer() {
+        System.out.print("Enter Consumer Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter Consumer ID: ");
+        int consumerId = scanner.nextInt();
+        System.out.print("Enter Units Consumed: ");
+        double unitsConsumed = scanner.nextDouble();
+
+        consumers.add(new Consumer(name, consumerId, unitsConsumed));
+        System.out.println("Consumer added successfully!");
+    }
+
+    private static void displayConsumers() {
+        if (consumers.isEmpty()) {
+            System.out.println("No consumers found.");
+        } else {
+            for (Consumer consumer : consumers) {
+                consumer.displayDetails();
+            }
+        }
+    }
+}
