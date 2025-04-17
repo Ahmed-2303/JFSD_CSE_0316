@@ -1,0 +1,42 @@
+.container {
+  padding: 0.5rem;
+  overflow-y: auto;
+
+  .nav {
+    .list,
+    .add_page {
+      overflow: hidden;
+
+      .list_header,
+      .add_page_header {
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        color: $color-lg;
+        border-radius: 0.3rem;
+        user-select: none;
+
+        transition: all 0.1s ease-in;
+
+        &:hover {
+          background: $background-primary-h;
+          cursor: pointer;
+        }
+
+        .icon_wrapper {
+          display: flex;
+          align-items: center;
+          padding: 0 1rem;
+          font-size: 1.6rem;
+          transition: transform 0.1s ease-in;
+        }
+
+        .icon_open {
+          transform: rotate(90deg);
+          transition: transform 0.1s ease-in;
+        }
+      }
+    }
+  }
+}

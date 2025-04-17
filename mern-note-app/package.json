@@ -1,0 +1,25 @@
+{
+  "name": "mern-note-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm run dev --prefix client",
+    "client-dependencies": "npm i --prefix client",
+    "server": "npm run server --prefix server",
+    "server-dependencies": "npm i --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "setup": "concurrently \"npm run server-dependencies\" \"npm run client-dependencies\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jp-quintana/mern-note-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
